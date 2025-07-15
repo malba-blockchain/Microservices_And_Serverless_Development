@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple HTML Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .button:hover {
+            background-color: #45a049;
+        }
+        
+        .message {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .counter {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to My Simple HTML Page</h1>
+        
+        <p>This is a basic HTML page with embedded CSS styling and JavaScript functionality.</p>
+        
+        <div class="counter">
+            Counter: <span id="counterValue">0</span>
+        </div>
+        
+        <div style="text-align: center;">
+            <button class="button" onclick="increment()">Increment</button>
+            <button class="button" onclick="decrement()">Decrement</button>
+            <button class="button" onclick="reset()">Reset</button>
+            <button class="button" onclick="showMessage()">Show Message</button>
+        </div>
+        
+        <div id="successMessage" class="message success">
+            Great! The button was clicked successfully.
+        </div>
+        
+        <div id="infoMessage" class="message info">
+            This is an informational message with some useful details.
+        </div>
+        
+        <div style="margin-top: 30px;">
+            <h3>Features of this page:</h3>
+            <ul>
+                <li>Responsive design with CSS styling</li>
+                <li>Interactive counter with JavaScript</li>
+                <li>Button hover effects</li>
+                <li>Toggle messages functionality</li>
+                <li>Clean, modern layout</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let counter = 0;
+        let messageVisible = false;
+        
+        function increment() {
+            counter++;
+            updateCounter();
+        }
+        
+        function decrement() {
+            counter--;
+            updateCounter();
+        }
+        
+        function reset() {
+            counter = 0;
+            updateCounter();
+            hideMessages();
+        }
+        
+        function updateCounter() {
+            document.getElementById('counterValue').textContent = counter;
+        }
+        
+        function showMessage() {
+            const successMsg = document.getElementById('successMessage');
+            const infoMsg = document.getElementById('infoMessage');
+            
+            if (messageVisible) {
+                hideMessages();
+            } else {
+                successMsg.style.display = 'block';
+                infoMsg.style.display = 'block';
+                messageVisible = true;
+            }
+        }
+        
+        function hideMessages() {
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('infoMessage').style.display = 'none';
+            messageVisible = false;
+        }
+        
+        // Add some interactivity on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded successfully!');
+            
+            // Add click event to the title
+            document.querySelector('h1').addEventListener('click', function() {
+                this.style.color = this.style.color === 'purple' ? '#333' : 'purple';
+            });
+        });
+    </script>
+</body>
+</html>
